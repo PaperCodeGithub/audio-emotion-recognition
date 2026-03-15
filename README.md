@@ -38,6 +38,8 @@ Because audio waveforms are 1D time-series data, this project converts them into
 - **Regularization:** Heavy use of BatchNormalization and Dropout (0.2 to 0.4) to prevent overfitting on the small dataset.
 - **Classification:** Flattening layer followed by Dense layers, ending with a Softmax activation for the 8 emotion classes.
 
+![Model](Screenshot 2026-03-16 002913.png)
+
 ## Overfitting Prevention
 **1. Data Augmentation**
 To push accuracy past the standard baseline, the data pipeline includes optional audio augmentation capabilities. By injecting subtle white noise and applying pitch shifting to the raw audio before MFCC extraction, the dataset size is effectively tripled, drastically improving the model's ability to generalize.
