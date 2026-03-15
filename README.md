@@ -38,7 +38,7 @@ Because audio waveforms are 1D time-series data, this project converts them into
 - **Regularization:** Heavy use of BatchNormalization and Dropout (0.2 to 0.4) to prevent overfitting on the small dataset.
 - **Classification:** Flattening layer followed by Dense layers, ending with a Softmax activation for the 8 emotion classes.
 
-![Model](Screenshot 2026-03-16 002913.png)
+![Model Architecture Flowchart](model.png)
 
 ## Overfitting Prevention
 **1. Data Augmentation**
@@ -49,3 +49,8 @@ Applied immediately after each convolutional block, Batch Normalization standard
 
 **3. Dropout**
 To combat the network's tendency to memorize the specific voices of the actors in the relatively small RAVDESS dataset, Dropout layers are strategically placed throughout the architecture. By randomly deactivating a set percentage of neurons (ranging from 20% in the convolutional blocks to 30% in the dense layers) during each training step, the network cannot rely on any single "pixel" of the spectrogram. This forces the model to learn robust, generalized patterns of emotion rather than memorizing the training files.
+
+## Training Performance
+Below is the graph of the model's accuracy and loss over 50 epochs, demonstrating the point at which the model begins to overfit before early stopping is triggered.
+
+![Training History Graph](graph.png)
