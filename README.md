@@ -5,6 +5,16 @@ This project implements a Speech Emotion Recognition system using TensorFlow and
 
 The model is trained to recognize 8 distinct emotions: Neutral, Calm, Happy, Sad, Angry, Fearful, Disgust, and Surprised.
 
+## The "Audio as Image" Paradigm
+
+At its core, raw audio is a one-dimensional time series—a single, long array of numbers representing air pressure changes over time. While neural networks can process 1D data, it is highly inefficient for extracting complex, high-level features like human emotion. 
+
+To solve this, this project leverages a standard signal processing technique to transform the 1D audio into a 2D mathematical "image":
+
+* **The Transformation:** Using a Fast Fourier Transform (FFT), the audio wave is broken down into its individual component frequencies. We then plot these frequencies on a 2D grid to create Mel-Frequency Cepstral Coefficients (MFCCs).
+* **The Axes:** On this 2D grid, the X-axis represents Time, the Y-axis represents Frequency (Pitch), and the actual values inside the matrix represent Amplitude (Loudness). 
+* **CNN Compatibility:** Because this 2D representation is structurally identical to a single-channel (grayscale) image, we can feed it directly into a standard image classification model. Just as a CNN learns to detect the physical edges and textures of objects in a photograph, it learns to detect the distinct visual "shapes" of human speech. For example, a sharp, angry shout creates distinct, jagged visual edges on the matrix, while a calm voice creates smooth, lower-frequency bands.
+
 ## Dataset
 This project is built using the **RAVDESS** (Ryerson Audio-Visual Database of Emotional Speech and Song) dataset. 
 
